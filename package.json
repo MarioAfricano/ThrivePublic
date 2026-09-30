@@ -1,0 +1,93 @@
+{
+  "name": "thrive-finance",
+  "version": "1.21.0",
+  "description": "App de Finanças Pessoais - Thrive",
+  "author": "Mário Ferreira",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k -n VITE,ELECTRON -c cyan,yellow \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "dev:vite": "vite",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder --win",
+    "electron": "electron .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "npm run build && playwright test",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\""
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "electron-updater": "^6.8.9",
+    "lucide-react": "^0.312.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.10.3",
+    "xlsx": "^0.18.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.61.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.9",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^41.3.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.5.0",
+    "jsdom": "^29.1.1",
+    "postcss": "^8.4.33",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^3.4.1",
+    "vite": "^6.4.1",
+    "vitest": "^2.1.9",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.thrive.finance",
+    "productName": "Thrive Finance",
+    "copyright": "Mário Ferreira",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "!electron/__tests__",
+      "build/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico"
+    },
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "MarioAfricano",
+        "repo": "Thrive",
+        "releaseType": "release"
+      }
+    ]
+  }
+}

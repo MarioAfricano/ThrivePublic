@@ -1,0 +1,220 @@
+/* Fonte Inter: importada localmente em main.jsx via @fontsource/inter */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Informa o browser do esquema activo: corrige scrollbars, <select>,
+     date pickers e outros controlos nativos que ficariam em modo claro. */
+  color-scheme: dark;
+
+  --bg: #0b0b0f;
+  --bg-elevated: #14141a;
+  --bg-card: #1a1a22;
+  --bg-hover: #21212c;
+  --border: rgba(255,255,255,0.07);
+  --border-strong: rgba(255,255,255,0.13);
+  --accent: #818cf8;
+  --accent-dim: rgba(129,140,248,0.12);
+  --green: #4ade80;
+  --green-dim: rgba(74,222,128,0.1);
+  --red: #f87171;
+  --red-dim: rgba(248,113,113,0.1);
+  --yellow: #fbbf24;
+  --blue: #60a5fa;
+  --pink: #f472b6;
+  --text: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #8a8a94;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06);
+
+  /* Superfícies/linhas subtis ("white alpha" no tema escuro; invertem no claro).
+     O nome codifica o alfa: --wa-07 = 0.07, --wa-012 = 0.012. */
+  --wa-012: rgba(255,255,255,0.012);
+  --wa-015: rgba(255,255,255,0.015);
+  --wa-02:  rgba(255,255,255,0.02);
+  --wa-025: rgba(255,255,255,0.025);
+  --wa-03:  rgba(255,255,255,0.03);
+  --wa-035: rgba(255,255,255,0.035);
+  --wa-04:  rgba(255,255,255,0.04);
+  --wa-05:  rgba(255,255,255,0.05);
+  --wa-06:  rgba(255,255,255,0.06);
+  --wa-07:  rgba(255,255,255,0.07);
+  --wa-08:  rgba(255,255,255,0.08);
+  --wa-10:  rgba(255,255,255,0.1);
+  --wa-12:  rgba(255,255,255,0.12);
+  --wa-13:  rgba(255,255,255,0.13);
+  --wa-14:  rgba(255,255,255,0.14);
+  --wa-15:  rgba(255,255,255,0.15);
+  --wa-18:  rgba(255,255,255,0.18);
+  --wa-20:  rgba(255,255,255,0.2);
+  --wa-22:  rgba(255,255,255,0.22);
+  --wa-25:  rgba(255,255,255,0.25);
+}
+
+/* ── Tema claro ─────────────────────────────────────────────────
+   Aplicado via <html data-theme="light"> (Definições → Aparência).
+   Os acentos hardcoded (#fbbf24, gráficos, etc.) mantêm-se — funcionam
+   razoavelmente em fundo claro; afinações pontuais são bem-vindas. */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f4f4f6;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #ebebf0;
+  --border: rgba(0,0,0,0.09);
+  --border-strong: rgba(0,0,0,0.18);
+  --accent: #6366f1;
+  --accent-dim: rgba(99,102,241,0.10);
+  --green: #15803d;
+  --green-dim: rgba(21,128,61,0.10);
+  --red: #dc2626;
+  --red-dim: rgba(220,38,38,0.08);
+  --yellow: #b45309;
+  --blue: #2563eb;
+  --pink: #db2777;
+  --text: #1c1c21;
+  --text-secondary: #46464e;
+  --text-muted: #6b6b74;
+  --shadow: 0 1px 3px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.05);
+
+  --wa-012: rgba(0,0,0,0.015);
+  --wa-015: rgba(0,0,0,0.02);
+  --wa-02:  rgba(0,0,0,0.025);
+  --wa-025: rgba(0,0,0,0.03);
+  --wa-03:  rgba(0,0,0,0.04);
+  --wa-035: rgba(0,0,0,0.045);
+  --wa-04:  rgba(0,0,0,0.05);
+  --wa-05:  rgba(0,0,0,0.06);
+  --wa-06:  rgba(0,0,0,0.07);
+  --wa-07:  rgba(0,0,0,0.09);
+  --wa-08:  rgba(0,0,0,0.10);
+  --wa-10:  rgba(0,0,0,0.12);
+  --wa-12:  rgba(0,0,0,0.14);
+  --wa-13:  rgba(0,0,0,0.15);
+  --wa-14:  rgba(0,0,0,0.16);
+  --wa-15:  rgba(0,0,0,0.17);
+  --wa-18:  rgba(0,0,0,0.20);
+  --wa-20:  rgba(0,0,0,0.22);
+  --wa-22:  rgba(0,0,0,0.24);
+  --wa-25:  rgba(0,0,0,0.27);
+}
+
+html, body, #root {
+  width: 100%; height: 100%; overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Selecção de texto ──────────────────────────────────────────
+   O conteúdo é selecionável (numa app de finanças tem de se poder
+   copiar um valor). Só o chrome e os controlos ficam bloqueados,
+   para o arrastar do rato não pintar labels de botões. */
+button, a, label, th,
+select, summary,
+.badge, .drag-region, .no-drag,
+[role="button"], [role="tab"] {
+  user-select: none;
+}
+
+/* ── Foco visível ───────────────────────────────────────────────
+   Um anel único para toda a app. `:focus-visible` (não `:focus`)
+   para não aparecer em cliques de rato, só em teclado. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+/* Inputs já têm borda de acento em edição — anel encostado fica melhor. */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--wa-10); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--wa-18); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-lg); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 99px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.badge-green { background: var(--green-dim); color: var(--green); }
+.badge-red   { background: var(--red-dim);   color: var(--red);   }
+.badge-blue  { background: rgba(96,165,250,0.1); color: var(--blue); }
+.badge-accent{ background: var(--accent-dim); color: var(--accent); }
+
+.progress-track { height: 6px; background: var(--wa-06); border-radius: 99px; overflow: hidden; }
+.progress-fill  { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted);
+  padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--border);
+}
+.data-table th:first-child { text-align: left; }
+.data-table td {
+  padding: 10px 12px; font-size: 0.875rem; color: var(--text-secondary);
+  border-bottom: 1px solid var(--wa-03);
+  text-align: right; font-variant-numeric: tabular-nums;
+}
+.data-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+.data-table tr:hover td { background: var(--wa-02); }
+
+.drag-region  { -webkit-app-region: drag; }
+.no-drag      { -webkit-app-region: no-drag; }
+
+.custom-tooltip {
+  background: var(--bg-elevated); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 10px 14px; box-shadow: var(--shadow-lg);
+}
+.custom-tooltip .label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 4px; }
+.custom-tooltip .value { font-size: 1rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+
+@keyframes spin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
+
+@keyframes spinIcon { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* `backwards` e nao `both`: com `both` o ultimo keyframe (translateY(0))
+   fica aplicado para sempre, e um transform num antepassado cria um bloco
+   de contencao para descendentes `position: fixed` — popovers e modais
+   passavam a ficar fixos em relacao a pagina, nao ao ecra, e fugiam com o
+   scroll. `backwards` da a mesma animacao sem deixar transform residual. */
+.page-enter {
+  animation: pageFadeIn 0.18s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+/* ── Movimento reduzido ─────────────────────────────────────────
+   Quem tem "reduzir movimento" ligado no SO recebe a app sem
+   animações nem transições. Os estados finais mantêm-se — só o
+   percurso até lá desaparece. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
